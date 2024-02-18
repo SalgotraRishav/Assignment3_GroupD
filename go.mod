@@ -1,0 +1,3 @@
+module ASSIGNMENT3_GROUPD
+
+go 1.21.6
