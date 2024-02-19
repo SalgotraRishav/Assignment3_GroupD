@@ -1,15 +1,15 @@
 package main
 
 import (
-    "encoding/json"
-    "net/http"
-    "net/http/httptest"
-    "testing"
+	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"testing"
 )
 
 func TestDeleteItemHandler(t *testing.T) {
     // Reset the items slice and add a test item
-    items = []Item{{ID: "test1", Name: "Test Item"}}
+    items = []Item{{ID: "test1", Title: "Test Item"}}
 
     // Create a DELETE request for the test item
     req, err := http.NewRequest("DELETE", "/delete/item?id=test1", nil)
@@ -19,7 +19,7 @@ func TestDeleteItemHandler(t *testing.T) {
 
     // Record the response using httptest
     rr := httptest.NewRecorder()
-    handler := http.HandlerFunc(deleteItemHandler)
+    handler := http.HandlerFunc(itemHandler)
 
     // Give the DELETE request to the handler
     handler.ServeHTTP(rr, req)
